@@ -3,22 +3,20 @@ $("#queryCategoryLevel1").change(function(){
 	if(queryCategoryLevel1 != '' && queryCategoryLevel1 != null){
 		$.ajax({
 			type:"GET",//请求类型
-			url:"categorylevellist.json",//请求的url
+			// url:"categorylevellist.json",//请求的url
+			url:"DevUser/categorylevellist",
 			data:{pid:queryCategoryLevel1},//请求参数
 			dataType:"json",//ajax接口（请求url）返回的数据类型
 			success:function(data){//data：返回数据（json对象）
 				$("#queryCategoryLevel2").html("");
 				var options = "<option value=\"\">--请选择--</option>";
 				for(var i = 0; i < data.length; i++){
-					
-					
-					
 					options += "<option value=\""+data[i].id+"\">"+data[i].categoryName+"</option>";
 				}
 				$("#queryCategoryLevel2").html(options);
 			},
 			error:function(data){//当访问时候，404，500 等非200的错误状态码
-				alert("加载二级分类失败！");
+				alert("你好"+data);
 			}
 		});
 	}else{

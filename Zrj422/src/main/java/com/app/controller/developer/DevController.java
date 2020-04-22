@@ -1,16 +1,24 @@
 package com.app.controller.developer;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.app.pojo.AppCategory;
 import com.app.pojo.DataDictionary;
 import com.app.service.developer.AppCategoryService;
 import com.app.service.developer.AppSearch1Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.app.pojo.DevUser;
 import com.app.service.developer.DevUserService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -24,10 +32,7 @@ public class DevController {
     private AppCategoryService appCategoryService;
     @RequestMapping("/login")
     public String login(ModelMap modelMap,String devCode,String devPassword){
-        System.out.println("登录"+devCode);
-        System.out.println("登录"+devPassword);
         DevUser devUser=devUserService.findByCode(devCode);
-        System.out.println(devUser);
         if (devUser.getDevPassword().equals(devPassword)){
             modelMap.addAttribute("devUser",devUser);
             return "jsp/developer/main";
@@ -38,7 +43,6 @@ public class DevController {
     @RequestMapping("/logout")
     public String login(ModelMap modelMap){
         DevUser devUser= (DevUser) modelMap.get("devUser");
-        System.out.println(devUser);
         modelMap.remove("delUser");
         return "jsp/index";
     }
@@ -47,12 +51,17 @@ public class DevController {
         List<DataDictionary> appstatus=appSearch1Service.appStatus();
         List<DataDictionary> appflatform=appSearch1Service.appFlatform();
         List<AppCategory> appCategories=appCategoryService.firstLevel();
-        System.out.println(appstatus.size());
-        System.out.println(appflatform.size());
-        System.out.println(appCategories.size());
         modelMap.addAttribute("statusList",appstatus);
         modelMap.addAttribute("flatFormList",appflatform);
         modelMap.addAttribute("categoryLevel1List",appCategories);
         return "jsp/developer/appinfolist";
+    }
+    @RequestMapping("categorylevellist")
+    @ResponseBody
+    public List<AppCategory> categorylevellist(String pid){
+        System.out.println(pid);
+        List<AppCategory> secondList=appCategoryService.secondLevel(Integer.parseInt(pid));
+        System.out.println(secondList.get(0));
+        return secondList;
     }
 }

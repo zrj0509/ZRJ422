@@ -18,4 +18,9 @@ public class AppCategoryServiceImpl implements AppCategoryService {
     public List<AppCategory> firstLevel() {
         return appCategoryDao.firstLevel();
     }
+
+    @Override
+    public List<AppCategory> secondLevel(int parentId) {
+        return appCategoryDao.secondLevel(parentId);
+    }
 }

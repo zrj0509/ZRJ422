@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AppCategoryDao {
     List<AppCategory> firstLevel();
+    List<AppCategory> secondLevel(int parentId);
 }

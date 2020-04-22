@@ -79,8 +79,8 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 							<input type="hidden" name="categorylevel2list" id="categorylevel2list"/>
         						<select name="queryCategoryLevel2" id="queryCategoryLevel2" class="form-control">
-        							<c:if test="${categoryLevel2List != null }">
-									   <option value="">--请选择--</option>
+									<c:if test="${categoryLevel2List != null }">
+										<option value="">--请选择--</option>
 									   <c:forEach var="appCategory" items="${categoryLevel2List}">
 									   		<option <c:if test="${appCategory.id == queryCategoryLevel2 }">selected="selected"</c:if>
 									   		value="${appCategory.id}">${appCategory.categoryName}</option>

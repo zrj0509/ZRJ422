@@ -13,4 +13,7 @@
     <select id="firstLevel" resultType="AppCategory">
         <include refid="table"/> where parentId is NULL;
     </select>
+    <select id="secondLevel" parameterType="int" resultType="AppCategory">
+        <include refid="table"/> where parentId = #{parentId};
+    </select>
 </mapper>
