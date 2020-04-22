@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--必须指定当前映射的文件名-->
+<mapper namespace="com.app.dao.DevUserDao">
+
+    <!--重用的SQL块 id名称-->
+    <sql id="table" >
+         select * from dev_user
+    </sql>
+    <select id="findByCode" parameterType="String" resultType="DevUser">
+        <include refid="table"/> where devCode=#{devCode}
+    </select>
+</mapper>

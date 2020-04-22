@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--必须指定当前映射的文件名-->
+<mapper namespace="com.app.dao.AppSearch1">
+
+    <!--重用的SQL块 id名称-->
+    <sql id="table" >
+         select * from data_dictionary
+    </sql>
+    <select id="appStatus" resultType="DataDictionary">
+        <include refid="table"/> where typeCode="app_status";
+    </select>
+    <select id="appFlatform" resultType="DataDictionary">
+        <include refid="table"/> where typeCode="app_Flatform";
+    </select>
+</mapper>
