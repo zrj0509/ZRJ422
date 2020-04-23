@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--必须指定当前映射的文件名-->
+<mapper namespace="com.app.dao.AppInfoDao">
+
+    <!--重用的SQL块 id名称-->
+    <sql id="table" >
+         select * from app_info
+    </sql>
+    <select id="all" resultType="AppInfo">
+        <include refid="table"/>
+
+    </select>
+    <insert id="add" parameterType="AppInfo">
+        insert into app_info  values ();
+    </insert>
+</mapper>

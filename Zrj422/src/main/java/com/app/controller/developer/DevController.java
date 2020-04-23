@@ -43,7 +43,7 @@ public class DevController {
     @RequestMapping("/logout")
     public String login(ModelMap modelMap){
         DevUser devUser= (DevUser) modelMap.get("devUser");
-        modelMap.remove("delUser");
+        modelMap.remove("devUser");
         return "jsp/index";
     }
     @RequestMapping("appinfolist")
