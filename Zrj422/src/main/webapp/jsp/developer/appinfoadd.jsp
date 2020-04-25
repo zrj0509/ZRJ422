@@ -19,7 +19,7 @@
          </div>
        </div> -->
            <div class="clearfix"></div>
-        <form class="form-horizontal form-label-left" action="appinfoaddsave" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal form-label-left" action="/DevUser/appinfoaddsave" method="post" enctype="multipart/form-data">
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">软件名称 <span class="required">*</span>
             </label>
@@ -85,7 +85,15 @@
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="select">一级分类 <span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select name="categoryLevel1" id="categoryLevel1" class="form-control"   required="required"> </select>
+              <select name="categoryLevel1" id="categoryLevel1" class="form-control"   required="required">
+                <c:if test="${categoryLevel1List2 != null }">
+                  <option value="">--请选择--</option>
+                  <c:forEach var="appCategory" items="${categoryLevel1List2}">
+                    <option <c:if test="${appCategory.id == categoryLevel1 }">selected="selected"</c:if>
+                            value="${appCategory.id}">${appCategory.categoryName}</option>
+                  </c:forEach>
+                </c:if>
+              </select>
             </div>
           </div>
           

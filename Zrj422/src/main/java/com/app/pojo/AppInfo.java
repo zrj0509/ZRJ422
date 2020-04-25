@@ -8,6 +8,7 @@ public class AppInfo {
     private String softwareName;
     private String APKName;
     private String supportROM;
+    private String interfaceLanguage;
     private double softwareSize;
     private String updateDate;
     private int devId;

@@ -12,9 +12,8 @@
     </sql>
     <select id="all" resultType="AppInfo">
         <include refid="table"/>
-
     </select>
     <insert id="add" parameterType="AppInfo">
-        insert into app_info  values ();
+        insert into app_info(softwareName,APKName,supportROM,interfacelanguage,softwareSize,downloads,flatformId,categoryLevel1,categoryLevel2,categoryLevel3,status,appInfo)  values (#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareSize},#{downloads},#{flatformId},#{categoryLevel1},#{categoryLevel2},#{categoryLevel3},#{status},#{appInfo});
     </insert>
 </mapper>

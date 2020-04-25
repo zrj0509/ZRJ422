@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AppInfoDao {
     List<AppInfo> all();
-    int add(Appinfo appinfo);
+    int add(AppInfo appInfo);
 }

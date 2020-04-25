@@ -2,7 +2,6 @@ package com.app.service.developer;
 
 import com.app.dao.AppInfoDao;
 import com.app.pojo.AppInfo;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Appinfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +21,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public int add(Appinfo appinfo) {
-        return appInfoDao.add(appinfo);
+    public int add(AppInfo appInfo) {
+        return appInfoDao.add(appInfo);
     }
 }
